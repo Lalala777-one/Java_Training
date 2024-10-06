@@ -1,16 +1,72 @@
 package lesson_16;
 
 public class MagicArray {
-    int[] array;
-    int cursor; // присвоено значение по умолчанию = 0;
+    private int[] array;
+    private int cursor; // присвоено значение по умолчанию = 0;
+
+    // конструкто 1
 
     public MagicArray() {
         array = new int[10];
     }
 
+    // конструктор 2   // РАЗОБРАТЬ
+
+    public MagicArray(int[] array) {
+
+        if (array == null || array.length == 0) {
+            this.array = new int[10];
+
+        } else {
+            this.array = new int[array.length * 2];
+
+            add(array);  //о передвижении курсора заботится метод add
+        }
+    }
+
+    // удаление элемента по индексу
+
+    int removeMe(int index){
+        if(index >= 0 && index < cursor){
+            //Логика удаления
+            int value = array[index]; // значение которое я должна вернуть
+
+            for (int i = index; i < cursor - 1; i++) { // граница перебора индексов??
+                array[i] = array[i + 1]; // в ячейку i записываем то что было в ячейке справа
+
+            } cursor --;
+
+            return value; // возвращаем старое значение
+
+        }else {
+
+            return Integer.MIN_VALUE;
+        }
+
+    }
+
+    //Удаление элемента по значению  // РАЗОБРАТЬ !!
+
+    boolean removeByValue(int value){
+        int index = indexOf(value);
+        if(index == -1) return false;
+
+        removeMe(index);
+        return true;
+    }
 
 
-    // удаление элемента по
+    // поиск по значению, возвращает индекс
+
+    int indexOf(int value){
+        for (int i = 0; i < cursor; i++) {
+            if(array[i] == value){
+                return i;
+            }
+
+        }
+        return -1;
+    }
 
 
     // Добавление в массив одного элемента#
@@ -90,18 +146,6 @@ public class MagicArray {
     }
 
     // Удаление элемента по индексу
-    int remove(int index) {
-
-        /*
-        1. Проверка индекса на валидность
-        2. Удалить значение по индексу
-        3. Передвинуть курсор (т.к. кол-во элементов уменьшилось)
-        4. Вернуть старое значение
-        */
-        //Todo реализовать
-        return -1;
-    }
-
 
 
 

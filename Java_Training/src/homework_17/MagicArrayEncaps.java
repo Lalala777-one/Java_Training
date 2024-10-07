@@ -5,14 +5,14 @@ public class MagicArrayEncaps {
     private int[] array;
     private int cursor;
 
-    private MagicArrayEncaps() {
+    public MagicArrayEncaps() {
         array = new int[10];
     }
 
 
     // конструктор принимающий в себя обычный массив и создающий MagicArray с такими же значениями
 
-    private MagicArrayEncaps(int[] initialArray) {
+    public MagicArrayEncaps(int[] initialArray) {
 
         array = new int[initialArray.length * 2];
 

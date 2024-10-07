@@ -6,7 +6,9 @@ public class Employee {
     private int age;
     private double salary;
 
-    Employee(String name, int age, double salary) {
+
+
+    public Employee(String name, int age, double salary) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("The name must not be empty.");
         }
@@ -70,8 +72,13 @@ public class Employee {
         }
     }
 
-    public String info() {
+    public String toString() {
         return String.format("Employee: %s, Age: %d, Salary: %.2f", name, age, salary);
+    }
+
+
+    public String info(){
+        System.out.println(this.toString());
     }
 }
 

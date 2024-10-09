@@ -14,9 +14,10 @@ public class Dog {
         this.maxJumpHeight = initialJumpHeight * 2;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
+
     public int getJumpHeight() {
         return jumpHeight;
     }
@@ -37,7 +38,7 @@ public class Dog {
             jumpHeight = newJumpHeight;
         }
 
-        System.out.println(name + "закончил тренировку. Новая высота прыжка: " + jumpHeight);
+        //System.out.println(name + "закончил тренировку. Новая высота прыжка: " + jumpHeight);
 
     }
 
@@ -48,41 +49,35 @@ public class Dog {
   Если да -> идем тренироваться -> берет барьер
      */
 
+
     public boolean jumpBarrier(int barrierHeight) {
         if (jumpHeight >= barrierHeight) {
             jump();
             System.out.println(name + "легко перепрыгивает барьер в " + barrierHeight);
+
             return true;
 
         }
         if (maxJumpHeight >= barrierHeight) {
             while (jumpHeight < maxJumpHeight) {
                 train();
-
-
-                if (jumpHeight >= barrierHeight) {
-                    jump();
-                    System.out.println(name + "потренировался и смог перепрыгнуть барьер высотой " + barrierHeight);
-                    return true;
-
-                }
             }
-        }
-            System.out.println(name + "не в состоянии взять барьер высотой " + barrierHeight + " см.");
-        return false;
+            jump();
 
+            System.out.println(name + "потренировался и смог перепрыгнуть барьер высотой " + barrierHeight);
+            return true;
+        }
+        System.out.println(name + "не в состоянии взять барьер высотой " + barrierHeight + " см.");
+        return false;
     }
 }
-
-
-
 
 
 class DogTest {
     public static void main(String[] args) {
         Dog rex = new Dog("Rex ", 3);
 
-        rex.jumpBarrier(2);
+        rex.jumpBarrier(20);
 
 
     }

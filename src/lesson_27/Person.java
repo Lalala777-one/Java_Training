@@ -1,6 +1,7 @@
 package lesson_27;
 
 public class Person {
+
     private String email;
     private String password;
 
@@ -52,7 +53,7 @@ public class Person {
         String domainPart = email.substring(indexAt + 1);
 
         int lastDotIndex = domainPart.lastIndexOf('.');
-        if (lastDotIndex == -1 || lastDotIndex >= domainPart.length() - 2) return false;
+        if ( lastDotIndex >= domainPart.length() - 2) return false;
 
 // Условие 4: Проверка на допустимые символы (буквы, цифры, '-', '_', '.', '@')
 
@@ -60,11 +61,12 @@ public class Person {
             return false;
 
         // Условие 5: Должен быть хотя бы один символ до '@'
-        if (indexAt <= 0)
-            return false;
+       // if (indexAt <= 0)
+          //  return false;
 
 
-        // Условие 6: Первый символ должен быть буквой
+        // Проверка номер 6 более широкая чем 5 и вкл в себя 5ю
+        // Условие 6: Первый символ должен быть буквой / Условие 5: Должен быть хотя бы один символ до '@'
         if (!Character.isLetter(localPart.charAt(0))) return false;
 
 
@@ -75,7 +77,8 @@ public class Person {
     private static boolean areValidCharacters(String part) {
         for (int i = 0; i < part.length(); i++) {
             char c = part.charAt(i);
-            if (!Character.isLetterOrDigit(c) && c != '-' && c != '_' && c != '.') {
+
+            if (!Character.isLetterOrDigit(c) && c != '-' && c !=  '_' && c != '.') {
                 return false;
             }
         }
@@ -108,12 +111,15 @@ Task 2
      */
 
     private boolean isValidPassword(String password) {
-        if (password.length() < 8) return false;
+        if (password == null || password.length() < 8) {
+            System.out.println();
+            return false;
+        }
 
-        boolean hasDigit = false; // наличие хотя бы одной цифры
-        boolean hasLowercase = false; //  наличие хотя бы одной маленькой буквы
-        boolean hasUppercase = false; // наличие хотя бы одной большой буквы:
-        boolean hasSpecialChar = false; // наличие хотя бы одного специального символа
+        boolean isDigit = false; // наличие хотя бы одной цифры
+        boolean isLowercase = false; //  наличие хотя бы одной маленькой буквы
+        boolean isUppercase = false; // наличие хотя бы одной большой буквы:
+        boolean isSpecialChar = false; // наличие хотя бы одного специального символа
 
         String specialCharacters = "!%$@&*()[].,-";
 
@@ -121,24 +127,25 @@ Task 2
             char ch = password.charAt(i);
 
             if (Character.isDigit(ch)) {
-                hasDigit = true;
+                isDigit = true;
             }
             if (Character.isLowerCase(ch)) {
-                hasLowercase = true;
+                isLowercase = true;
             }
             if (Character.isUpperCase(ch)) {
-                hasUppercase = true;
+                isUppercase = true;
             }
             if (specialCharacters.indexOf(ch) != -1) {
-                hasSpecialChar = true;
+                isSpecialChar = true;
             }
 
-            if (hasDigit && hasLowercase && hasUppercase && hasSpecialChar) {
+
+            if (isDigit && isLowercase && isUppercase && isSpecialChar) {
                 return true;
             }
 
         }
-        return hasDigit && hasLowercase && hasUppercase && hasSpecialChar;
+        return isDigit && isLowercase && isUppercase && isSpecialChar;
     }
 }
 

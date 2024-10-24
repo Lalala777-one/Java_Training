@@ -61,7 +61,10 @@ public class Rectangle {
     // TASK 3
 // Метод должен удалить из списка все объекты, которые равны переданному объекту (используя переопределённый метод equals()).
     private static void removeDuplicates (List<Rectangle> rectangleList , Rectangle rectangle){
+        for (int i = 0; i < rectangle.length; i++) {
 
+
+        }
 
     }
 

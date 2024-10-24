@@ -27,7 +27,7 @@ public class PersonTest {
 
     @Test
     void testValidPasswordSet(){
-        String validPassword = "Td3rty1Q$";
+        String validPassword = "Фыррв4!вап";
 
         person.setPassword(validPassword);
         Assertions.assertEquals(validPassword, person.getPassword());

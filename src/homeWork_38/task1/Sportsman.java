@@ -47,7 +47,7 @@ public class Sportsman implements Comparable <Sportsman>{
 
     @Override
     public int compareTo(Sportsman number1) {
-        return this.name.compareTo(number1.name);
+        return this.getName().compareTo(number1.getName());
     }
 }
 

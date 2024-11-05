@@ -14,9 +14,7 @@ Sportsman[] sportsmens = new Sportsman[5];
         sportsmens[4] = new Sportsman("Tom", 32, 5.2);
 
 
-
         /*
-
  Отсортируйте его с использованием:
 естественного порядка, определенного в Comparable,
 данного класса Comparator,
@@ -25,7 +23,10 @@ Sportsman[] sportsmens = new Sportsman[5];
 
 
         Arrays.sort(sportsmens); // естественного порядка, определенного в Comparable,
-        System.out.println(Arrays.toString(sportsmens));
+
+        for (Sportsman sportsmans : sportsmens){
+            System.out.println(Arrays.toString(sportsmens));
+        }
 
         SportsmanScoreComparator sportsmanScoreComparator = new SportsmanScoreComparator();
 

@@ -11,8 +11,8 @@ public class Task1 {
      */
 
     public static void main(String[] args) {
-      ArrayList<String> fruts1 = new ArrayList<>(List.of("Banana", "Cherry", "Apple", "Orange"));
-       LinkedList<String> fruts2 = new LinkedList<>(List.of("Peach", "Cherry", " Pear", "Pineapple", "Apple", "Banana"));
+      List<String> fruts1 = new ArrayList<>(List.of("Banana", "Cherry", "Apple", "Orange"));
+      List<String> fruts2 = new ArrayList<>(List.of("Peach", "Cherry", " Pear", "Pineapple", "Apple", "Banana"));
 
 
         List<String> resultVar1 = newListVar1(fruts1, fruts2);
@@ -34,8 +34,8 @@ public class Task1 {
 
     }
 
-    public static List<String> newListVar1 (ArrayList<String> strings1, LinkedList<String> strings2){
-        ArrayList<String> newList = new ArrayList<>();
+    public static List<String> newListVar1 (List<String> strings1, List<String> strings2){
+        List<String> newList = new ArrayList<>();
       for (String string : strings1){
           if(strings2.contains(string)){
              newList.add(string);
@@ -45,15 +45,15 @@ public class Task1 {
 
 
 
-    public static List<String> newListVar2 (ArrayList<String> strings1, LinkedList<String> strings2){
+    public static List<String> newListVar2 (List<String> strings1, List<String> strings2){
         strings1.retainAll(strings2);
-        return strings1;  // проблема, меняется изначальный ArrayList strings1
+        return strings1;  // проблема, меняется изначальный List strings1
     }
 
 
 
-    public static List<String> newListVar3 (ArrayList<String> strings1, LinkedList<String> strings2){
-        ArrayList<String> strings1Copy = new ArrayList<>(strings1);
+    public static List<String> newListVar3 (List<String> strings1, List<String> strings2){
+        List<String> strings1Copy = new ArrayList<>(strings1);
 
         strings1Copy.retainAll(strings2);
         return strings1Copy;

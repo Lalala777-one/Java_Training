@@ -4,48 +4,32 @@ import java.util.*;
 
 public class Task1 {
 
-    public static void test(String testStr) {
+    public static void main(String[] args) {
 
-        // Заменяем все не буквы на пустоту
-        String newString = testStr.replaceAll("[^a-zA-Z0-9а-яА-Я ]", "");
-
-
-        // Преобразование строки в массив слов
-        String[] words = newString.split(" ");
-
-
-        // Arrays.asList(T[] array) -> преобразует массив в коллекцию
-        List<String> list = Arrays.asList(words);
-
-
-        Set<String> uniqueWords = new LinkedHashSet<>(Arrays.asList(words));
-
-        //  Сортировка сначала по длине, а потом по алфавиту
-        //  (для одинаковых по длине слов).
-
-        Comparator<String> lengthComparator = (word1, word2) -> {
-            //  по длине
-            int lengthComparison = Integer.compare(word1.length(), word2.length());
-
-            // по алфавиту
-            if (lengthComparison == 0) {
-                return word1.compareTo(word2);
-            }
-
-            return lengthComparison;
-        };
-
-        //
-        List<String> sortedWords = new ArrayList<>(uniqueWords);
-        sortedWords.sort(lengthComparator);
-
-        //
-        System.out.println(sortedWords);
     }
 
-    public static void main(String[] args) {
-        String testString = "Тестовая строка для удаления слов, которые повторяются. \"строка\" для удаления!";
-        test(testString);
+    public static List<String> getUniqueSortedWords(String testString){
+        /*
+        1. Избиваться от знаков препинания
+        2. Разобрать на слова
+        3. Поместить в какую-то коллекцию, которая мне обеспечит уникальность и сортировку
+        4. Преобразовать в список и вернуть
+         */
+
+        // заменяю все не буквы и не пробелы на пустоту - удаляю все из строки. Изначальная строка не меняется
+        // метод trim удибает пробелы в начале и в конце строки
+        testString = testString.trim().replaceAll("[^a-zA-Z0-9а-яА-Я]", "");
+
+        //разбить на слова по пробельному символу "+" означает - в любом количества (в случае если между словами будет несколько пробелов"
+        String [] words = testString.split("\\s+");
+
+        Set<String> uniqueWords = new TreeSet<>(Comparator.comparing(String::length).thenComparing(Comparator.naturalOrder()));
+
+        //преобразую массив в список и передаю в метод addAll (в set будут добавлены все элементы из списка слов)
+        // Set обеспечит сортировку и удалит дубликат
+        uniqueWords.addAll(Arrays.asList(words));
+
+        return new ArrayList<>(uniqueWords);
     }
 
 }

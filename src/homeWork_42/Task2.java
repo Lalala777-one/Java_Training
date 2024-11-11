@@ -7,7 +7,7 @@ public class Task2 {
     public static void main(String[] args) {
 
         String testStr = "Hello our beautiful World. This is our test string.";
-        HashMap<Integer, Integer> resultMap = countWordsOfLength(testStr);
+        Map<Integer, Integer> resultMap = countWordsOfLength(testStr);
 
         for (Map.Entry<Integer, Integer> entry : resultMap.entrySet()){
             System.out.println("Word length " + entry.getKey() + ": " + entry.getValue() + " words");
@@ -15,11 +15,11 @@ public class Task2 {
 
     } // main
 
-    public static HashMap<Integer, Integer> countWordsOfLength(String str) {
+    public static Map<Integer, Integer> countWordsOfLength(String str) {
         str = str.replaceAll("[^a-zA-Zа-яА-Я0-9\\s]", "").trim();
         String[] words = str.split("\\s+");
 
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
         for (String word : words) {
             int wordLength = word.length();

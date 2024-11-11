@@ -1,6 +1,7 @@
 package homeWork_42;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Task1 {
@@ -16,6 +17,10 @@ public class Task1 {
     }
 
     public static boolean isStringsAnagram(String st1, String st2){
+
+        st1 = st1.replaceAll("\\s+", "").toLowerCase();
+        st2 = st2.replaceAll("\\s+", "").toLowerCase();
+
         if(st1.length() != st2.length()){
             return false;
         }

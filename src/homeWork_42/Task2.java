@@ -16,18 +16,24 @@ public class Task2 {
     } // main
 
     public static Map<Integer, Integer> countWordsOfLength(String str) {
-        str = str.replaceAll("[^a-zA-Zа-яА-Я0-9\\s]", "").trim();
+
+        // привести текст к нижнему регистру, удалить не буквы(знаки препинания)
+        str = str.toLowerCase().replaceAll("[^a-zа-я-Я0-9\\s]", "").trim();
+
+        // Разбиваю текст на слова
         String[] words = str.split("\\s+");
 
         Map<Integer, Integer> map = new HashMap<>();
 
         for (String word : words) {
-            int wordLength = word.length();
+            if (!word.isEmpty()) {
+                int wordLength = word.length();
 
-            // Если длина больше 0
-            if (wordLength > 0) {
-                // Обновляем значение в HashMap: если длина уже есть, увеличиваем счетчик, если нет - добавляем
-                map.put(wordLength, map.getOrDefault(wordLength, 0) + 1);
+                // Если длина больше 0
+                if (wordLength > 0) {
+                    // Обновляем значение в HashMap: если длина уже есть, увеличиваем счетчик, если нет - добавляем
+                    map.put(wordLength, map.getOrDefault(wordLength, 0) + 1);
+                }
             }
         }
         return map;

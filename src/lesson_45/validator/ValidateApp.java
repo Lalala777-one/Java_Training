@@ -4,9 +4,9 @@ public class ValidateApp {
     public static void main(String[] args) {
 
         // получаем email от пользователя (сканером, из другого слоя приложения и тд)
-        String email = "testemail@.com";
+        String email = "1estemail@co.m";
 
-        String password = "jjhjlhррррр";
+        String password = "jjhjl!1ррррр";
 
         // Валидация пароля
         try {

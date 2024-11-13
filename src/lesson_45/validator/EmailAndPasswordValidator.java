@@ -17,7 +17,7 @@ public class EmailAndPasswordValidator {
         if (indexAt == -1 || indexAt != email.lastIndexOf('@')) {
             errorMessage.append("\n\t\t- must contain exactly one '@' symbol. ");
         }
-        ;
+
 
         // 2. Точка после собаки
         int dotIndexAfterAt = email.indexOf('.', indexAt + 1);
@@ -49,7 +49,6 @@ public class EmailAndPasswordValidator {
                     ch == '.' ||
                     ch == '@');
 
-
             // Если любой символ НЕ подходящий, сразу возвращаем false
             if (!isPass) {
                 errorMessage.append("\n\t\t- can only contain letters, digits, '-', '_', '.', and '@'. No other characters are allowed.");
@@ -59,8 +58,9 @@ public class EmailAndPasswordValidator {
         // 6. Первый символ - должна быть буква
         // Если 0-й символ НЕ является буквой, то email не подходит = return false;
         char firstChar = email.charAt(0);
-        if (!Character.isAlphabetic(firstChar))
-            throw new EmailValidateException("        - the first symbol should be alphabetic");
+        if (!Character.isAlphabetic(firstChar)) {
+            errorMessage.append("\n\t\t- the first symbol should be alphabetic");
+        }
 
         // Все проверки пройдены. email подходит.
 

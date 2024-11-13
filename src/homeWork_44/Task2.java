@@ -23,6 +23,7 @@ public class Task2 {
                 .min(Comparator.comparingInt(String::length));
 
 
+        // shortestString.ifPresentOrElse(); можно исспользовать вместо обычных if...else. Встроенный метод Optional
         if (shortestString.isPresent()) {
             System.out.println("Минимальная строка: " + shortestString.get());
         }else {

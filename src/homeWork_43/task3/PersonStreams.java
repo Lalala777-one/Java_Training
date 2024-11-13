@@ -1,6 +1,7 @@
 package homeWork_43.task3;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,7 +24,9 @@ public class PersonStreams {
             List<Person> personsList = getPersonsList();
 
             Stream<Person> personStream = personsList.stream()
-                    .filter(person -> person.getAge() > 25 && person.getCity().equals("Berlin"));
+                    .filter(person -> person.getAge() > 25 && person.getCity().equalsIgnoreCase("Berlin"));
+
+            // Objects.equals(city, person.getCity) это когда метод принимает параметры age, city БЕЗОПАСНО ПРИ НАЛИЧИИ null
 
             List<Person> sortedByAgeAndCity = personStream.collect(Collectors.toList());
 

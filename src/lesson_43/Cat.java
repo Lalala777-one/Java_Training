@@ -26,7 +26,7 @@ public class Cat {
     }
 
     public void setName(String name) {
-        System.out.println("call getName " + name);
+       // System.out.println("call getName " + name);
         this.name = name;
     }
 

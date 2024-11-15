@@ -71,9 +71,6 @@ public class EmailAndPasswordValidator {
     } // isValidEmail
 
 
-
-
-
     // проверка пароля
 
     public static void isValidPassword(String password) throws PasswordValidateException {
@@ -92,21 +89,14 @@ public class EmailAndPasswordValidator {
         for (int i = 0; i < password.length(); i++) {
             char ch = password.charAt(i);
 
-            if (Character.isDigit(ch)) {
-                isDigit = true;
-            }
+            if (Character.isDigit(ch)) isDigit = true;
 
-            if (Character.isLowerCase(ch)) {
-                isLowercase = true;
-            }
+            if (Character.isLowerCase(ch)) isLowercase = true;
 
-            if (Character.isUpperCase(ch)) {
-                isUppercase = true;
-            }
+            if (Character.isUpperCase(ch)) isUppercase = true;
 
-            if (specialCharacters.indexOf(ch) != -1) {
-                isSpecialChar = true;
-            }
+            if (specialCharacters.indexOf(ch) != -1) isSpecialChar = true;
+
             if (isDigit && isLowercase && isUppercase && isSpecialChar) {
                 return;
             }
@@ -137,8 +127,9 @@ public class EmailAndPasswordValidator {
         if (!valid) {
             throw new PasswordValidateException(errorMessage.toString());
         }
-
     } // isValidPassword
+
+
 }
 
 
